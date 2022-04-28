@@ -59,7 +59,7 @@ const CourceEdit=()=>{
     const slug=router.query.slug;
 
     useEffect(async()=>{
-        const editData=await axios.get(`/api/course/${slug}`)
+        const editData=await axios.get(`https://udemybackends.herokuapp.com/api/course/${slug}`)
         console.log(editData.data)
         setValues(editData.data)
 
@@ -134,7 +134,7 @@ const CourceEdit=()=>{
         try{
 
             console.log(values.price)
-            const {data}=await axios.put(`/api/course/${slug}`,{
+            const {data}=await axios.put(`https://udemybackends.herokuapp.com/api/course/${slug}`,{
                 ...values,
             
             })
@@ -167,7 +167,7 @@ const CourceEdit=()=>{
 
         
         console.log(values.image)
-        const {data}=await axios.put(`/api/course/${slug}`)
+        const {data}=await axios.put(`https://udemybackends.herokuapp.com/api/course/${slug}`)
         toast("Greet lessons is Edit successessifully")
 
         console.log(values.lessons)
@@ -185,7 +185,7 @@ const CourceEdit=()=>{
        const remove= allLesson.splice(index,1)
         setValues({...values,lessons:allLesson});
         console.log(remove[0]._id)
-        const {data}= await axios.put(`/api/course/${slug}/${remove[0]._id}`)
+        const {data}= await axios.put(`https://udemybackends.herokuapp.com/api/course/${slug}/${remove[0]._id}`)
         toast('Remove this lesson')
 
     }
@@ -246,7 +246,7 @@ const CourceEdit=()=>{
     }
 const handleUploadlessons=async()=>{
     console.log('lession handle')
-const  {data}=await axios.put(`/api/course/lesson/${slug}/${current._id}`,current)
+const  {data}=await axios.put(`https://udemybackends.herokuapp.com/api/course/lesson/${slug}/${current._id}`,current)
 setUploadVideoButtonText('Upload videos');
 setProgress(0)
 setUploading(false)

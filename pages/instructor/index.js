@@ -23,7 +23,7 @@ const InstructorIndex=()=>{
 
     
   const  loadingCourses=async()=>{
-      const {data}=await axios.get('/api/current-courses');
+      const {data}=await axios.get('https://udemybackends.herokuapp.com/api/current-courses');
 
       setCourses(data)
 

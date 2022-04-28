@@ -5,7 +5,7 @@
   "main": "index.js",
   "url": "https://boiling-journey-48901.herokuapp.com/",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

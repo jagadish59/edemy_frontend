@@ -27,7 +27,7 @@ const router=useRouter();
 
 useEffect(async ()=>{
 if(user&&course){
-    const {data}= await axios.get(`/api/check-enrollment/${course._id}`)
+    const {data}= await axios.get(`https://udemybackends.herokuapp.com/api/check-enrollment/${course._id}`)
     console.log('data',data)
     setEnrollment(data)
 }
@@ -59,7 +59,7 @@ if(user&&course){
             if(!user)router.push('/login')
             if(enrollment.status)router.push(`/user/course/${enrollment.courses.slug}`)
             setLoading(true)
-            const {data}=await axios.post(`/api/free-enrollment/${course._id}`)
+            const {data}=await axios.post(`https://udemybackends.herokuapp.com/api/free-enrollment/${course._id}`)
             toast(data.message);
             setLoading(false)
             router.push(`/user/course/${data.course.slug}`)
@@ -116,7 +116,7 @@ if(user&&course){
     )
 }
 export async function getServerSideProps({query}){
-    const {data}=await axios.get(` http://localhost:8000/api/course/${query.slug}`)
+    const {data}=await axios.get(` https://udemybackends.herokuapp.com/api/course/${query.slug}`)
     console.log(data)
     return({
         props:{course:data}

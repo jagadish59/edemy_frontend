@@ -31,7 +31,7 @@ const SingleCourse = () => {
             try {
                 console.log('slug is', slug)
                 setLoading(true)
-                const { data } = await axios.get(`/api/user/course/${slug}`)
+                const { data } = await axios.get(`https://udemybackends.herokuapp.com/api/user/course/${slug}`)
                 setCourse(data);
                 setLoading(false)
 
@@ -49,7 +49,7 @@ const SingleCourse = () => {
     useEffect(async () => {
         // for lession complete
         if (course) {
-            const { data } = await axios.post(`/api/list-complete`, {
+            const { data } = await axios.post(`https://udemybackends.herokuapp.com/api/list-complete`, {
                 courseId: course._id,
 
             })
@@ -63,7 +63,7 @@ const SingleCourse = () => {
     const markCompleted = async () => {
 
         try {
-            const { data } = await axios.post(`/api/mark-completed`, {
+            const { data } = await axios.post(`https://udemybackends.herokuapp.com/api/mark-completed`, {
                 courseId: course._id,
                 lessonsId: course.lessons[clicked]._id,
             })
@@ -81,7 +81,7 @@ const SingleCourse = () => {
     const markInCompleted = async () => {
 
         try {
-            const { data } = await axios.post(`/api/mark-incompleted`, {
+            const { data } = await axios.post(`https://udemybackends.herokuapp.com/api/mark-incompleted`, {
                 courseId: course._id,
                 lessonsId: course.lessons[clicked]._id,
             })

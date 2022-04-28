@@ -26,7 +26,7 @@ const Register = () => {
         e.preventDefault()
         try {
             setLoading(true)
-             const {data}=await axios.post(`/api/register`,
+             const {data}=await axios.post(`https://udemybackends.herokuapp.com/api/register`,
                 {
                     name: name, email: email, password: Password
                 })

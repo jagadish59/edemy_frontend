@@ -21,7 +21,7 @@ const BecomeInstructor=()=>{
 
     const becomeInstructor=()=>{
         setLoading(true)
-        axios.post('/api/make-instructor').then(res=>{
+        axios.post('https://udemybackends.herokuapp.com/api/make-instructor').then(res=>{
             console.log(res)
             window.location.href=res.data;
         })

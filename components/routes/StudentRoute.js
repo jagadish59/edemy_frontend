@@ -25,7 +25,7 @@ const StudentRoute = ({children}) => {
 
         
 
-            const { data } = await axios.get('/api/current-user')
+            const { data } = await axios.get('https://udemybackends.herokuapp.com/api/current-user')
             console.log(data);
             if(data.ok) setOk(true)
 

@@ -29,13 +29,16 @@ const Login = () => {
         e.preventDefault()
         try {
             setLoading(true)
-             const {data}=await axios.post(`/api/login`,
+             const {data}=await axios.post(`https://udemybackends.herokuapp.com/api/login`,
                 {
                  email: email, password: Password
                 })
                 console.log(data)
                 setLoading(false)
                 toast.success(" sucessfully login")
+
+                console.log("user",data)
+                console.log('called');
 
                 dispatch({
                     type:"LOGIN",

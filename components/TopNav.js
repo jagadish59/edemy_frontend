@@ -25,7 +25,7 @@ const TopNav=()=>{
     const  logout=async()=>{
         dispatch({type:"LOGOUT"})
         window.localStorage.removeItem('user');
-        const {data}=await axios.get('/api/logout');
+        const {data}=await axios.get('https://udemybackends.herokuapp.com/api/logout');
         toast(data.message);
         route.push('/login');
 

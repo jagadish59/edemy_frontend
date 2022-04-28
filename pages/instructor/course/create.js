@@ -75,7 +75,7 @@ const CourceCreate=()=>{
             getDownloadURL(uploadTask.snapshot.ref).then( async (url)=>{console.log(url);
                 setUrl(url);
                 
-            let {data}=await axios.post("/api/course/upload-image",{image:url})
+            let {data}=await axios.post("https://udemybackends.herokuapp.com/api/course/upload-image",{image:url})
             setValues({...values,loading:false})
             console.log(data)
             })
@@ -132,7 +132,7 @@ const CourceCreate=()=>{
         e.preventDefault();
 
         try{
-            const {data }=await axios.post('/api/course',{
+            const {data }=await axios.post('https://udemybackends.herokuapp.com/api/course',{
                 ...values,
                 image:url,
             })

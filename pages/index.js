@@ -48,7 +48,7 @@ const Index=({courses})=>{
 
 
 export async function getServerSideProps(content){
-    const {data}=await axios.get(` http://localhost:8000/api/courses`)
+    const {data}=await axios.get(`https://udemybackends.herokuapp.com/api/courses`)
     console.log(data)
     return({
         props:{courses:data}

@@ -33,7 +33,7 @@ const ForgetPassword=()=>{
         e.preventDefault();
         try{
             setLoading(true);
-            const {data}=await axios.post('/api/forget-password',{email:email});
+            const {data}=await axios.post('https://udemybackends.herokuapp.com/api/forget-password',{email:email});
             setSuccess(true);
             toast(`Check your email ${email}`)
             
@@ -52,7 +52,7 @@ const ForgetPassword=()=>{
         try{
             setLoading(true);
 
-            const {data}=await axios.post('/api/reset-password',{email,code,newpassword});
+            const {data}=await axios.post('https://udemybackends.herokuapp.com/api/reset-password',{email,code,newpassword});
             toast(`Password Reset successifully`)
 
             setCode('')

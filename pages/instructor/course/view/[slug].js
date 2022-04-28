@@ -46,7 +46,7 @@ import { async } from '@firebase/util';
 
         
 
-        const cource = await axios.get(`/api/course/${slug.slug}`).then(respon=>{
+        const cource = await axios.get(`https://udemybackends.herokuapp.com/api/course/${slug.slug}`).then(respon=>{
             console.log(respon)
             setCourse(respon.data);
 
@@ -68,7 +68,7 @@ import { async } from '@firebase/util';
         try{
             if(course){
 
-                const {data}=await axios.post(`api//instructor/student-conunt`,{
+                const {data}=await axios.post(`https://udemybackends.herokuapp.com/api/instructor/student-conunt`,{
                     courseId:course._id,
 
                 })
@@ -97,7 +97,7 @@ import { async } from '@firebase/util';
 
             console.log(course.instructor[0]._id)
             
-        const {data}=await axios.post(`/api/course/lesson/${slug.slug}/${course.instructor[0]._id}`,{values,video})
+        const {data}=await axios.post(`https://udemybackends.herokuapp.com/api/course/lesson/${slug.slug}/${course.instructor[0]._id}`,{values,video})
         console.log(data)
         setValues({...values,title:'',content:''})
         setVideo('')
@@ -194,7 +194,7 @@ import { async } from '@firebase/util';
 
                 let answer=window.confirm("Once publish your course on market place")
                 if(!answer)return
-                const data=await axios.put(`/api/course/unpublish/${courseId}`)
+                const data=await axios.put(`https://udemybackends.herokuapp.com/api/course/unpublish/${courseId}`)
                 setCourse(data.data)
                 toast("Congratulation your course is unpublish")
 
@@ -212,7 +212,7 @@ import { async } from '@firebase/util';
             try{
                 let answer=window.confirm("Once unpublish your course on market place no inroll for user in market")
             if(!answer)return
-            const data=await axios.put(`/api/course/publish/${courseId}`)
+            const data=await axios.put(`https://udemybackends.herokuapp.com/api/course/publish/${courseId}`)
             setCourse(data.data)
             toast(" Congratulation your course is published ")
             

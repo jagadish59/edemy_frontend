@@ -17,7 +17,7 @@ const UserIndex = () => {
 
 
         setLoading(true)
-const {data}=await axios.get(`/api/user-courses`)
+const {data}=await axios.get(`https://udemybackends.herokuapp.com/api/user-courses`)
 setCoursee(data);
 
 setLoading(false)
