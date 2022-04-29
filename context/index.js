@@ -35,37 +35,38 @@ const Provider = ({ children }) => {
 
     const router=useRouter()
 
-    // axios.interceptors.response.use(
-    //     function (response) {
-    //         //any status code that lie within  the  range of 2XX
-    //         console.log("this is from axios interceptors");
-    //         return response;
+    axios.interceptors.response.use(
+        function (response) {
+            //any status code that lie within  the  range of 2XX
+            console.log("this is from axios interceptors");
+            return response;
 
-    //     },
-    // function (error) {
-    //         //any outside of range the 2XX 
-    //         console.log("this is from axios interceptors error bluck");
-    //         let res = error.response;
-    //         if (res.status === 401 && !res.config.__isRetryRequest) {
-    //             return new Promise((resolve, reject) => {
-    //                 axios.get('https://udemybackends.herokuapp.com/api/logout')
-    //                 .then(data => {
-    //                     console.log("/401 error> Logout")
-    //                     dispatch({type:"LOGOUT"})
-    //                     window.localStorage.removeItem('user')
-    //                     router.push('/login');
+        },
+    function (error) {
+            //any outside of range the 2XX 
+            console.log("this is from axios interceptors error bluck");
+            let res = error.response;
+            console.log('error from axios',error)
+            if (res.status === 401 && !res.config.__isRetryRequest) {
+                return new Promise((resolve, reject) => {
+                    axios.get('https://udemybackends.herokuapp.com/api/logout')
+                    .then(data => {
+                        console.log("/401 error> Logout")
+                        dispatch({type:"LOGOUT"})
+                        window.localStorage.removeItem('user')
+                        router.push('/login');
 
-    //                 })
-    //                 .catch(err => {
-    //                     console.log(err)
-    //                     reject(error);
-    //                 })
-    //             })
-    //         }
-    //         return Promise.reject(error)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        reject(error);
+                    })
+                })
+            }
+            return Promise.reject(error)
 
-    //     }
-    // )
+        }
+    )
 
 
     useEffect(()=>{

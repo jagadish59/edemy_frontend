@@ -29,7 +29,7 @@ const Login = () => {
         e.preventDefault()
         try {
             setLoading(true)
-             const {data}=await axios.post(`https://udemybackends.herokuapp.com/api/login`,
+             const {data}=await axios.post(`http://udemybackends.herokuapp.com/api/login`,
                 {
                  email: email, password: Password
                 })
@@ -47,7 +47,7 @@ const Login = () => {
                 // savein local storage
                 window.localStorage.setItem('user',JSON.stringify(data))
                 // redirect
-                router.push('/user');
+                // router.push('/user');
             }
         catch (err) {
             toast.error(err.response.data)
